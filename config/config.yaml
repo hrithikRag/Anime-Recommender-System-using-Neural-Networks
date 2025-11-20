@@ -1,0 +1,26 @@
+data_ingestion:
+  bucket_name : "anime_recommender_system_data"
+  bucket_file_names: 
+    - "anime.csv"
+    - "anime_with_synopsis.csv"
+    - "animelist.csv"
+
+model:
+  embedding_size : 16
+  activation : sigmoid
+  loss : mse
+  optimizer : Adam
+  metrics : ["mae", "mse"]
+
+training_parameters:
+  start_lr : 0.00005
+  min_lr : 0.00001
+  max_lr : 0.0001
+  batch_size : 10000
+  ramup_epochs : 20
+  sustain_epochs : 100
+  exp_decay : 0.8
+  monitor : val_loss
+  mode : min
+  patience : 3
+  epochs : 1
