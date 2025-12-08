@@ -3,3 +3,4 @@
 #     1/0
 # except Exception as e:
 #     raise CustomException("Failed to devide 1 by 0", e)
+########################################################################################

@@ -98,6 +98,7 @@ class DataProcessor:
     
 
     def split_data(self, test_ratio=0.2 , random_state=43):
+
         try:
             self.rating_df = self.rating_df.sample(frac=1,random_state=43).reset_index(drop=True)
             X = self.rating_df[["user","anime"]].values
@@ -212,6 +213,7 @@ class DataProcessor:
 
 
 if __name__=="__main__":
+    
     data_processor = DataProcessor(ANIMELIST_CSV,PROCESSED_DIR)
     data_processor.run()
 

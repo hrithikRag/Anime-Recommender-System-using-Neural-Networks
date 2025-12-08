@@ -1,0 +1,8 @@
+[core]
+    remote = myremote3
+['remote "myremote"']
+    url = gs://anime_recommender_system_dvc_bucket/
+['remote "myremote2"']
+    url = gs://anime_recommender_system_dvc_bucket/
+['remote "myremote3"']
+    url = gs://anime_recommender_system_dvc_bucket/

@@ -11,6 +11,8 @@ def hybrid_recommendation(user_id , user_weight=0.5, content_weight =0.5):
     
 
     user_recommended_anime_list = user_recommended_animes["anime_name"].tolist()
+    #print('user_anime : ', len(user_recommended_anime_list))
+    #print(user_recommended_anime_list)
 
     #### Content recommendation
     content_recommended_animes = []
@@ -23,15 +25,23 @@ def hybrid_recommendation(user_id , user_weight=0.5, content_weight =0.5):
         else:
             print(f"No similar anime found {anime}")
     
-    combined_scores = {}
+    #print('content_anime : ', len(content_recommended_animes))
 
-    for anime in user_recommended_anime_list:
-        combined_scores[anime] = combined_scores.get(anime,0) + user_weight
+    # combined_scores = {}
 
-    for anime in content_recommended_animes:
-        combined_scores[anime] = combined_scores.get(anime,0) + content_weight  
+    # for anime in user_recommended_anime_list:
+    #     combined_scores[anime] = combined_scores.get(anime,0) + user_weight
 
-    sorted_animes = sorted(combined_scores.items() , key=lambda x:x[1] , reverse=True)
+    # for anime in content_recommended_animes:
+    #     combined_scores[anime] = combined_scores.get(anime,0) + content_weight  
 
-    return [anime for anime , score in sorted_animes[:10]] 
+    # sorted_animes = sorted(combined_scores.items() , key=lambda x:x[1] , reverse=True)
+
+    # return [anime for anime , score in sorted_animes[:10]] 
+
+    user_cnt=int(round(10*user_weight))
+    content_cnt=int(round(10*content_weight))
+
+    return user_recommended_anime_list [:user_cnt] + content_recommended_animes[:content_cnt]
+
 
