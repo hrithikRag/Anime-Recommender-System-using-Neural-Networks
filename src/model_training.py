@@ -98,15 +98,15 @@ class ModelTraining:
             try:
                 logger.info("Model training started.....")
 
-                history = model.fit(
-                        x=X_train_array,
-                        y=y_train,
-                        batch_size=batch_size,
-                        epochs=self.config["training_parameters"]["epochs"],
-                        verbose=1,
-                        validation_data = (X_test_array,y_test),
-                        callbacks=my_callbacks
-                    )
+                # history = model.fit(
+                #         x=X_train_array,
+                #         y=y_train,
+                #         batch_size=batch_size,
+                #         epochs=self.config["training_parameters"]["epochs"],
+                #         verbose=1,
+                #         validation_data = (X_test_array,y_test),
+                #         callbacks=my_callbacks
+                #     )
                 
                 model.load_weights(CHECKPOINT_FILE_PATH)
 
