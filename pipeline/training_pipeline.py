@@ -10,8 +10,8 @@ if __name__=="__main__":
 
     logger.info("Starting Data Processing and Model Training Pipeline....")
 
-    data_processor = DataProcessor(ANIMELIST_CSV,PROCESSED_DIR)
-    data_processor.run()
+    # data_processor = DataProcessor(ANIMELIST_CSV,PROCESSED_DIR)
+    # data_processor.run()
 
     model_trainer = ModelTraining(PROCESSED_DIR)
     model_trainer.train_model()
