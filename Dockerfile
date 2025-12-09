@@ -18,31 +18,16 @@ RUN apt-get update && apt-get install -y \
 # Set the working directory
 WORKDIR /app
 
-# Copy requirements first for better caching
+# Copy and install dependencies
 COPY requirements.txt setup.py ./
-COPY pipeline ./pipeline
-COPY application.py ./
-
-# Install dependencies from requirements.txt
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -e .
 
-# Copy the rest of the application code
+# Copy the application code
 COPY . .
-
-# Debug: Check what files are present
-RUN echo "=== Listing files ===" && \
-    ls -la && \
-    echo "=== Listing pipeline directory ===" && \
-    ls -la pipeline/ || echo "Pipeline directory not found"
-
-# Train the model with error handling
-RUN python pipeline/training_pipeline.py && \
-    echo "Training completed successfully" || \
-    (echo "Training failed - check if data files and configs are present" && exit 1)
 
 # Expose the port that Flask will run on
 EXPOSE 5000
 
-# Command to run the app
+# Command to run the app (training will happen at runtime if needed)
 CMD ["python", "application.py"]
